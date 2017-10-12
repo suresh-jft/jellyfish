@@ -58,6 +58,13 @@
 		//border-left:10px solid black;
 		float:left;
 	}
+	.introduction-container {
+		width:300px;
+		height:500px;
+		margin:100px auto 0;
+		padding:20px 60px;
+		background-color:lightgray;
+	}
 	input,select{
 		margin-left:20px;
 	}
@@ -84,6 +91,12 @@
 		text-align:center;
 		text-decoration:underline;
 	}
+	h2 {
+		text-align:center;
+	}
+	#introduction {
+		text-align:justify;
+	}
 </style>
 	<script type="text/javascript">
 		function show() 
@@ -101,14 +114,39 @@
 				}
 			}
 			hobbies=temp_hobbies;
-			var course = document.getElementById('course');
-			course = (course.options[course.selectedIndex].value);
-			console.log("name:"+name);
+			var course = document.getElementById('course').value;
+			//course = (course.options[course.selectedIndex].value);
+			/**console.log("name:"+name);
 			console.log("email:"+email);
 			console.log("gender:"+gender);
 			console.log("hobbies:"+hobbies);
-			console.log("course:"+course);
-			alert("ok");
+			console.log("course:"+course);**/
+			var introduction = "Hi, My name is "+name+". You can catch me on "+email+". I am "+gender+". ";
+			if(hobbies.length > 0)
+			{
+				introduction += "My ";
+				if(hobbies.length == 1)
+					introduction += "hobby is "+hobbies[0]+". ";
+				else
+				{
+					introduction += "hobbies are ";
+					for(var i=0;i<(hobbies.length-2);i++)
+						introduction += hobbies[i]+", ";
+					introduction += hobbies[i++] + " and "+ hobbies[i]+". "
+				}
+			}
+			introduction += "I am currently involved in "+course+" course. Thank you.";
+			//document.getElementById('introduction').innerHTML = introduction;
+			var temp = document.getElementById('introduction');
+			var i=0;
+			var func = setInterval(function () {
+				if(i == introduction.length)
+				{
+					clearInterval(func);
+					return;
+				}
+				temp.append(introduction.charAt(i++));
+			},50);
 			
 			
 		}
@@ -130,7 +168,7 @@
 	<div class="content-wrapper">
 		<div class="left-content">
 			<div class="form-container">
-				<form onsubmit="show()">
+				<form onsubmit="show();return false;">
 					<div class="row"><label>Name:</label><input type="text" name="name" id="name" placeholder="Enter your name" required></div>
 					<div class="row"><label>email:</label><input type="email" name="email" id="email" placeholder="Enter your email" required></div>
 					<div class="row">
@@ -148,28 +186,33 @@
 					<div class="row">
 						<label>Course:</label>
 						<select name="course" id="course" class="row">
-							<option value="btech">B-Tech</option>
-							<option value="btech">MBA</option>
-							<option value="btech">B.Ed</option>
-							<option value="btech">B.Sc</option>
-							<option value="btech">Arts</option>
+							<option value="B-Tech">B-Tech</option>
+							<option value="MBA">MBA</option>
+							<option value="B.Ed">B.Ed</option>
+							<option value="B.Sc">B.Sc</option>
+							<option value="Arts">Arts</option>
 						</select>
 					</div>
 					<div class="submit-container">
 						<input type="submit" name="submit" value="Submit">
 					</div>
+					
 
 				</form>
 			</div>
 		</div>
 		<div class="right-content">
 			<h1>CSS AND JAVASCRIPT DEMO</h1>
-			<hr>
+			<div class="introduction-container">
+				<h2>Introduction</h2>
+				<hr>
+				<div id="introduction">here- </div>
+			</div>
 		</div>
 	</div>
-	<footer>
+	<div>
 		This is footer.
-	</footer>
+	</div>
 	
 </body>
 </html>

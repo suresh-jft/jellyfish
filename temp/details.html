@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="Author" content="Suresh Gupta">
+	<style>
+		input:required {
+			border-left : 4px solid #c33;
+		}
+		
+		input:focus:invalid,
+		textarea:focus:invalid,
+		select:focus:invalid, {
+			color: #c33;
+			border-color: #c33;
+		}
+		
+		input:focus:invalid:focus,
+		textarea:focus:invalid:focus,
+		select:focus:invalid:focus, {
+			border-color: #c33;
+			-webkit-box-shadow: 0 0 6px #fcc;
+			-moz-box-shadow: 0 0 6px #fcc;
+			     box-shadow: 0 0 6px #fcc;
+		}
+		
+	</style>
+</head>
+<body>
+	
+	<form class="narrow">
+		<h2>Personal Details</h2>
+		<div>
+			Name: <input type="text"
+						 placeholder="Enter your first and last name"
+						 required
+						 minlength="5"
+						 autofocus
+						 patter="(.*)\s(.*)"
+						 >
+		</div>
+
+		<div>
+			Email: <input type="email"
+						  placeholder="Enter your email"
+						  required
+						  >
+		</div>
+
+		<div>
+			Telephone: <input type="tel"
+							  placeholder="Enter your telephone no"
+							  required
+							  >
+		</div>
+
+		<div>
+			Website: <input type="url"
+							placeholder="Enter your website"
+							required
+							>
+		</div>
+		
+		<h2>Building Details</h2>
+		<div>
+			Rooms: <input type="number"
+						  placeholder="# no. of rooms"
+						  required
+						  min="1"
+						  max="12"
+						  step="1"
+						  >
+		</div>
+		
+		<div>
+			Wall Color: <input type="color"
+						  	   placeholder="choose color"
+						       required
+						       >
+		</div>
+		
+		<div>
+			Dimension: <input type="range"
+							  id="dimension_length"
+						  	  required  
+							  min="1"
+							  max="180"
+							  step="1"
+						      >
+			<br>
+					   <input type="range"
+							  id="dimension_width"
+						  	  required  
+							  min="1"
+							  max="180"
+							  step="1"
+						      >
+			<br>
+			<span id="dimension-show"></span>
+		</div>
+		<div>
+			<input type="submit"
+				   value="Submit"
+				   >
+		</div>
+				
+	</form>
+</body>
+</html>
